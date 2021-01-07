@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   hnApi: 'https://hacker-news.firebaseio.com/v0',
-  hnWeb: 'https://news.ycombinator.com'
+  hnWeb: 'https://news.ycombinator.com',
+  cognitiveKey: '',
+  cognitiveUrl: ''
 };
 
 /*
