@@ -4,15 +4,8 @@ import { StoryService } from '../story.service';
 
 @Component({
   selector: 'app-reactive',
-  template: `
-    <div *ngFor="let item of stories">
-      <a [href]="item.url" target="_blank">{{item.title}}</a>
-      (<a [href]="item.discussion" target="_blank">{{item.comments?.length}} comments</a>)
-      [{{item.sentiment}}]
-    </div>
-  `,
-  styles: [
-  ]
+  templateUrl: './reactive.component.html',
+  styleUrls: ['./reactive.component.css']
 })
 export class ReactiveComponent implements OnInit {
 
