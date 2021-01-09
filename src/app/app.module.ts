@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { ProactiveComponent } from './proactive/proactive.component';
 import { ReactiveComponent } from './reactive/reactive.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ReactiveComponent } from './reactive/reactive.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { map, switchMap, tap} from 'rxjs/operators';
 import { News } from '../news';
 import { StoryService } from '../story.service';
 
@@ -7,15 +10,32 @@ import { StoryService } from '../story.service';
   templateUrl: './reactive.component.html',
   styleUrls: ['./reactive.component.css']
 })
-export class ReactiveComponent implements OnInit {
-
+export class ReactiveComponent implements OnInit, OnDestroy {
+  
   stories: News[] = [];
-  constructor(private storySvc: StoryService) { }
+  subscription: Subscription;
+  possibleSentiments = ['positive', 'neutral', 'negative'];
 
-  ngOnInit(): void {    
-    this.storySvc.news().subscribe(news => {
+  constructor(
+    private storySvc: StoryService, 
+    private route: ActivatedRoute,
+    private router: Router) { }
+
+  ngOnInit(): void {
+    this.route.fragment.pipe(
+      map(fragment => fragment === 'positive' ? ['positive'] : undefined),
+      tap(_ => this.stories = []),
+      switchMap(sentiments => this.storySvc.news(sentiments))
+    ).subscribe(news => {
       this.stories.push(news);
-    })
+    });
   }
 
+  onFilter(showPositive: boolean): void {
+    this.router.navigateByUrl(`#${showPositive ? 'positive' : ''}`);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }

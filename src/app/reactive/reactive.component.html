@@ -1,4 +1,5 @@
 <h1>Top HN Stories</h1>
+<label><input #cbx type="checkbox" (change)="onFilter($event.target.checked)">Show only positive news</label>
 <div *ngFor="let item of stories">
     <a [href]="item.url" target="_blank">{{item.title}}</a>
     | <a [href]="item.discussion" target="_blank">{{item.comments?.length}} comments</a>

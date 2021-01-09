@@ -2,13 +2,15 @@ h1 {
     color: #ff6600;
 }
 
-div {
-    padding-bottom: 0.75rem;
+input {
+   margin-bottom: 1rem; 
 }
 
 a {
     text-decoration: none;
     color: #000000;
+    display:inline-block;
+    margin-bottom: 0.75rem;
 }
 
 a:visited {
