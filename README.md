@@ -1,4 +1,10 @@
 # Reactive Angular
+A practical example of Reactive Programming in Angular using RxJs. 
+
+The demo shows top 20 Hacker News stories and allows filtering only positive news using Azure Cognitive Services. 
+
+Explanation in details in this [medium article](https://medium.com/@paveltuzov/reactive-angular-b7914b0190f5)
+
 ## Running the code
 A file named `cognitive.environment.ts` with the following export is expected to be in the `/src/environments` folder:
 
